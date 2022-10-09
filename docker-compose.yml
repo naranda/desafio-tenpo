@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  app:
+    image: 'tenpo:latest'
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=welcome1
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - ENDPOINT_PORCENTAJE=https://run.mocky.io/v3/66c206ab-f14a-4fb9-82c3-3e598bc3d030
+
+  db:
+    image: 'postgres:latest'
+    ports:
+      - "5432:5432"
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=welcome1

@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "5fbd14b1-a4e8-4579-bbdb-31730951cf43",
+		"name": "Desafio Tenpo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5797190"
+	},
+	"item": [
+		{
+			"name": "01 SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Nicolas\",\n    \"apellido\": \"Aranda\",\n    \"email\": \"nicolas.aranda@gmail.com\",\n    \"clave\": \"welcome1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login",
+						"signup"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Registro de usuario OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nicolas\",\n    \"apellido\": \"Aranda\",\n    \"email\": \"nicolas.aranda@gmail.com\",\n    \"clave\": \"welcome1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"signup"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Error Usuario Existente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nicolas\",\n    \"apellido\": \"Aranda\",\n    \"email\": \"nicolas.aranda@gmail.com\",\n    \"clave\": \"welcome1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"signup"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T03:15:23.238+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"El usuario ya se encuentra registrado\",\n    \"path\": \"/api/login/signup\"\n}"
+				},
+				{
+					"name": "Error atributo o valor faltante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nicolas\",\n    \"apellido\": \"Aranda\",\n    \"email\": \"nicolas.aranda@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/login/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"signup"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T03:16:55.749+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed for object='signUpRequestDTO'. Error count: 2\",\n    \"errors\": [\n        {\n            \"codes\": [\n                \"NotNull.signUpRequestDTO.clave\",\n                \"NotNull.clave\",\n                \"NotNull.java.lang.String\",\n                \"NotNull\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"signUpRequestDTO.clave\",\n                        \"clave\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"clave\",\n                    \"code\": \"clave\"\n                }\n            ],\n            \"defaultMessage\": \"Debe ingresar la clave del usuario\",\n            \"objectName\": \"signUpRequestDTO\",\n            \"field\": \"clave\",\n            \"rejectedValue\": null,\n            \"bindingFailure\": false,\n            \"code\": \"NotNull\"\n        },\n        {\n            \"codes\": [\n                \"NotBlank.signUpRequestDTO.clave\",\n                \"NotBlank.clave\",\n                \"NotBlank.java.lang.String\",\n                \"NotBlank\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"signUpRequestDTO.clave\",\n                        \"clave\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"clave\",\n                    \"code\": \"clave\"\n                }\n            ],\n            \"defaultMessage\": \"Debe ingresar la clave del usuario\",\n            \"objectName\": \"signUpRequestDTO\",\n            \"field\": \"clave\",\n            \"rejectedValue\": null,\n            \"bindingFailure\": false,\n            \"code\": \"NotBlank\"\n        }\n    ],\n    \"path\": \"/api/login/signup\"\n}"
+				}
+			]
+		},
+		{
+			"name": "02 Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"nicolas.aranda@gmail.com\",\n    \"clave\": \"welcome1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nicolas.aranda@gmail.com\",\n    \"clave\": \"welcome1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWNvbGFzLmFyYW5kYUBnbWFpbC5jb20iLCJleHAiOjE2NjUyMTcxMDksImlhdCI6MTY2NTE5OTEwOX0.L0Or81ullTgkaC_R50HTA0naP92aFUw-AfSPm4gk1yGVK7iYzz2_m9KDl2Ru-2gXDV1KDSVz8Qn_SLu0fR9dQA\"\n}"
+				},
+				{
+					"name": "Error atributo o valor faltante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nicolas.aranda@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T03:19:05.186+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed for object='loginRequestDTO'. Error count: 2\",\n    \"errors\": [\n        {\n            \"codes\": [\n                \"NotBlank.loginRequestDTO.pass\",\n                \"NotBlank.pass\",\n                \"NotBlank.java.lang.String\",\n                \"NotBlank\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"loginRequestDTO.pass\",\n                        \"pass\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"pass\",\n                    \"code\": \"pass\"\n                }\n            ],\n            \"defaultMessage\": \"Debe ingresar la clave del usuario\",\n            \"objectName\": \"loginRequestDTO\",\n            \"field\": \"pass\",\n            \"rejectedValue\": null,\n            \"bindingFailure\": false,\n            \"code\": \"NotBlank\"\n        },\n        {\n            \"codes\": [\n                \"NotNull.loginRequestDTO.pass\",\n                \"NotNull.pass\",\n                \"NotNull.java.lang.String\",\n                \"NotNull\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"loginRequestDTO.pass\",\n                        \"pass\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"pass\",\n                    \"code\": \"pass\"\n                }\n            ],\n            \"defaultMessage\": \"Debe ingresar la clave del usuario\",\n            \"objectName\": \"loginRequestDTO\",\n            \"field\": \"pass\",\n            \"rejectedValue\": null,\n            \"bindingFailure\": false,\n            \"code\": \"NotNull\"\n        }\n    ],\n    \"path\": \"/api/login/\"\n}"
+				},
+				{
+					"name": "Error usuario o clave incorrecta",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nicolas.aranda@gmail.com\",\n    \"clave\": \"welcome12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T03:20:16.382+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Usuario o Clave incorrecto\",\n    \"path\": \"/api/login/\"\n}"
+				}
+			]
+		},
+		{
+			"name": "03 Operacion Suma",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWNvbGFzLmFyYW5kYUBnbWFpbC5jb20iLCJleHAiOjE2NjUyODM1OTMsImlhdCI6MTY2NTI2NTU5M30.zGjdaDokA7iOgDT1KnJSOAGpw7EvDymsUGsDov_xYu7Pj8mtob2yb9y-cntvhjZZVCSK3aAvyWIfoUmOIcjywQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numero1\":10,\n    \"numero2\":30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/operacion/suma",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"operacion",
+						"suma"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Operacion Suma OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero1\":10,\n    \"numero2\":30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/operacion/suma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operacion",
+								"suma"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"resultado\": 68\n}"
+				},
+				{
+					"name": "Error no autorizado - token expirado",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero1\":10,\n    \"numero2\":30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/operacion/suma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operacion",
+								"suma"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T18:46:41.783001\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Token Expirado\"\n}"
+				},
+				{
+					"name": "Error atributo o valor faltante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero1\":10,\n    \"numero2\":30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/operacion/suma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operacion",
+								"suma"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T21:49:55.449+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed for object='sumaRequestDTO'. Error count: 1\",\n    \"errors\": [\n        {\n            \"codes\": [\n                \"NotNull.sumaRequestDTO.numero2\",\n                \"NotNull.numero2\",\n                \"NotNull.java.lang.Double\",\n                \"NotNull\"\n            ],\n            \"arguments\": [\n                {\n                    \"codes\": [\n                        \"sumaRequestDTO.numero2\",\n                        \"numero2\"\n                    ],\n                    \"arguments\": null,\n                    \"defaultMessage\": \"numero2\",\n                    \"code\": \"numero2\"\n                }\n            ],\n            \"defaultMessage\": \"Debe ingresar el valor para numero2\",\n            \"objectName\": \"sumaRequestDTO\",\n            \"field\": \"numero2\",\n            \"rejectedValue\": null,\n            \"bindingFailure\": false,\n            \"code\": \"NotNull\"\n        }\n    ],\n    \"path\": \"/api/operacion/suma\"\n}"
+				}
+			]
+		},
+		{
+			"name": "04 Historico",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWNvbGFzLmFyYW5kYUBnbWFpbC5jb20iLCJleHAiOjE2NjUyODM1OTMsImlhdCI6MTY2NTI2NTU5M30.zGjdaDokA7iOgDT1KnJSOAGpw7EvDymsUGsDov_xYu7Pj8mtob2yb9y-cntvhjZZVCSK3aAvyWIfoUmOIcjywQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/historial",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"historial"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Historico Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/historial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"historial"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"totalPagina\": 1,\n    \"pagina\": 0,\n    \"totalElementos\": 10,\n    \"historial\": [\n        {\n            \"id\": 10,\n            \"fechaRegistro\": \"08-10-2022 00:21:54\",\n            \"usuario\": \"ignacia@gmail.com\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/operacion/suma\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 9,\n            \"fechaRegistro\": \"08-10-2022 00:21:12\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 200,\n            \"url\": \"/api/login/\",\n            \"resultado\": \"{\\\"token\\\":\\\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWNvbGFzLmFyYW5kYUBnbWFpbC5jb20iLCJleHAiOjE2NjUyMTcyNzIsImlhdCI6MTY2NTE5OTI3Mn0.SDKqy1TNLZ1cEu0cPdOMjZmL0V2CI_dzWd54pdJKYuIDLdC_cFloLzC6dzTQ3ktfTfOODGPRgJQ6sFwGMKaXYw\\\"}\"\n        },\n        {\n            \"id\": 8,\n            \"fechaRegistro\": \"08-10-2022 00:20:16\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/login/\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 7,\n            \"fechaRegistro\": \"08-10-2022 00:19:05\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/login/\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 6,\n            \"fechaRegistro\": \"08-10-2022 00:18:29\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 200,\n            \"url\": \"/api/login/\",\n            \"resultado\": \"{\\\"token\\\":\\\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWNvbGFzLmFyYW5kYUBnbWFpbC5jb20iLCJleHAiOjE2NjUyMTcxMDksImlhdCI6MTY2NTE5OTEwOX0.L0Or81ullTgkaC_R50HTA0naP92aFUw-AfSPm4gk1yGVK7iYzz2_m9KDl2Ru-2gXDV1KDSVz8Qn_SLu0fR9dQA\\\"}\"\n        },\n        {\n            \"id\": 5,\n            \"fechaRegistro\": \"08-10-2022 00:18:22\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/login/\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 4,\n            \"fechaRegistro\": \"08-10-2022 00:17:50\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/login/signup\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"fechaRegistro\": \"08-10-2022 00:16:55\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/login/signup\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"fechaRegistro\": \"08-10-2022 00:15:23\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/login/signup\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 1,\n            \"fechaRegistro\": \"08-10-2022 00:15:19\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 201,\n            \"url\": \"/api/login/signup\",\n            \"resultado\": \"\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Historico con paginacion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/historial?numPagina=1&cantidadElementos=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"historial"
+							],
+							"query": [
+								{
+									"key": "numPagina",
+									"value": "1"
+								},
+								{
+									"key": "cantidadElementos",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"totalPagina\": 6,\n    \"pagina\": 0,\n    \"totalElementos\": 10,\n    \"historial\": [\n        {\n            \"id\": 10,\n            \"fechaRegistro\": \"08-10-2022 00:21:54\",\n            \"usuario\": \"ignacia@gmail.com\",\n            \"method\": \"POST\",\n            \"status\": 400,\n            \"url\": \"/api/operacion/suma\",\n            \"resultado\": \"\"\n        },\n        {\n            \"id\": 9,\n            \"fechaRegistro\": \"08-10-2022 00:21:12\",\n            \"usuario\": \"anonimo\",\n            \"method\": \"POST\",\n            \"status\": 200,\n            \"url\": \"/api/login/\",\n            \"resultado\": \"{\\\"token\\\":\\\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaWNvbGFzLmFyYW5kYUBnbWFpbC5jb20iLCJleHAiOjE2NjUyMTcyNzIsImlhdCI6MTY2NTE5OTI3Mn0.SDKqy1TNLZ1cEu0cPdOMjZmL0V2CI_dzWd54pdJKYuIDLdC_cFloLzC6dzTQ3ktfTfOODGPRgJQ6sFwGMKaXYw\\\"}\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Error no autorizado - token expirado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/historial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"historial"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-10-08T18:50:51.969248\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"message\": \"Token Expirado\"\n}"
+				}
+			]
+		}
+	]
+}
